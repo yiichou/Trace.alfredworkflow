@@ -10,7 +10,7 @@
 
 1. Download
     
-    https://github.com/IvanChou/trace.alfredworkflow/raw/master/Trace(Proxy-helper).alfredworkflow
+    https://github.com/IvanChou/Trace.alfredworkflow/raw/master/Trace%20(Proxy-helper).alfredworkflow
     
 2. Setting
     
