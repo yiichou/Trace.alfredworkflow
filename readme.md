@@ -16,7 +16,7 @@
     
     - Doubule click `trace` in Alfred Workflows Preferences
     - Click `Open workflow folder` to open Finder
-    - Open `proxy.conf` and modify like sample
+    - Open `proxy.conf` and modify it like sample
 
 3. Use
     
@@ -39,7 +39,7 @@ To slove this question, you can do something more:
     # e.g.
     IChou ALL=NOPASSWD: /usr/sbin/networksetup
     ```
-    > Remeber the file `/etc/sudoers/` must end with a empty line!!
+    > Remeber the file `/etc/sudoers/` must be end with a empty line!!
     
 2. re-link the scripts of trace
     
