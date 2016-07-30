@@ -3,14 +3,11 @@
 # Source the workflow library
 . workflowHandler.sh
 
-# set your password, avoid to be asked every time.
-PWD=''
-
 # Config file
 PROFILE_CONF='proxy.conf'
 
 # Icons folder
-ICONS_DIR='./icons'
+ICONS_DIR="./icons"
 
 # Current device
 DEVICE=''
@@ -38,7 +35,7 @@ function get_curr_proxy_state()
 
 function get_curr_socks_state()
 {
-    networksetup -getsocksfirewallproxy $DEVICE | grep Enabled | awk '{print $2}'
+    networksetup -getsocksfirewallproxy $DEVICE | grep -E '^Enabled' | awk '{print $2}'
 }
 
 function get_curr_proxy_setting()
@@ -102,16 +99,16 @@ EOF
 function on()
 {
     if [ ${2:0:4} = 'http' ]; then
-        echo $PWD | sudo -S networksetup -setsocksfirewallproxystate $DEVICE off
-        sudo -S networksetup -setautoproxyurl $DEVICE $2
+        sudo networksetup -setsocksfirewallproxystate $DEVICE off
+        sudo networksetup -setautoproxyurl $DEVICE $2
         echo "$1 AutoProxy, TRACE ON"
     else
         domain=$(echo "$2" | awk -F: '{print $1}')
         port=$(echo "$2" | awk -F: '{print $2}')
         
         if [[ $domain != '' ]]&&[[ $port != '' ]]; then
-            echo $PWD | sudo -S networksetup -setautoproxystate $DEVICE off
-            sudo -S networksetup -setsocksfirewallproxy $DEVICE $domain $port
+            sudo networksetup -setautoproxystate $DEVICE off
+            sudo networksetup -setsocksfirewallproxy $DEVICE $domain $port
             echo "$1, TRACE ON！"
         else
             echo "TRACE FAILED"
@@ -122,8 +119,8 @@ function on()
 # Turn off all proxy
 function off()
 {
-    echo $PWD | sudo -S networksetup -setautoproxystate $DEVICE off
-    sudo -S networksetup -setsocksfirewallproxystate $DEVICE off
+    sudo networksetup -setautoproxystate $DEVICE off
+    sudo networksetup -setsocksfirewallproxystate $DEVICE off
     echo "TRACE END"
 }
 

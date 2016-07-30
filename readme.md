@@ -28,15 +28,22 @@
 
 ### More feature
 
-When you change your proxy setting via Trace, OSX may ask your password to allow this operation everytime. There is no better way to slove the question, but let trace keep your password.
+When you change your proxy setting via Trace, OSX may ask your password to allow this operation everytime. 
 
-Open `trace.sh` , set your password
+To slove this question, you can do something more:
 
-```bash
-# set your password, avoid to be asked every time.
-PWD='yourpwd'
-```
-It's unsafe, but quite convenient. By the way, if nobody has been told, is there anyone know your password has been shown here?
+1. add the following line to `/etc/sudoers/`
+    
+    ```
+    yourusername ALL=NOPASSWD: /usr/sbin/networksetup 
+    # e.g.
+    IChou ALL=NOPASSWD: /usr/sbin/networksetup
+    ```
+    > Remeber the file `/etc/sudoers/` must end with a empty line!!
+    
+2. re-link the scripts of trace
+    
+    ![](http://ww4.sinaimg.cn/large/006pIUL1gw1f6c4lm9l0qj30kh07o75b.jpg)
 
 ### About Trace
 
